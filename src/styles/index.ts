@@ -20,6 +20,6 @@ export const {
 
       green500: '#00875f',
       green300: '#00b37e',
-    }
+    },
   },
 })
