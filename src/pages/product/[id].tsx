@@ -83,7 +83,7 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
 }
 
 export const getStaticProps: GetStaticProps<
-  { product: Product },
+  ProductProps,
   { id: string }
 > = async ({ params }) => {
   const productId = params.id

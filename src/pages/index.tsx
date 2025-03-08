@@ -68,13 +68,7 @@ export default function Home({ products }: HomeProps) {
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => (
-        <Link
-          key={product.id}
-          href={`/product/${product.id}`}
-          prefetch={false}
-          passHref
-          legacyBehavior
-        >
+        <Link key={product.id} href={`/product/${product.id}`} prefetch={false}>
           <Product className="keen-slider__slide">
             <Image src={product.imageUrl} alt="" height={480} width={520} />
 
@@ -101,7 +95,7 @@ export default function Home({ products }: HomeProps) {
  *
  * *OBS.: Não é possível ter acesso ao contexto da requisição.*
  */
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
@@ -137,7 +131,7 @@ export const getStaticProps: GetStaticProps = async () => {
  *
  * *OBS.: É possível ter acesso ao contexto da requisição.*
  */
-/* export const getServerSideProps: GetServerSideProps = async () => {
+/* export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'],
   })
