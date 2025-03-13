@@ -41,17 +41,6 @@ export const Product = styled('div', {
     transform: 'translateY(110%)',
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
-
-    strong: {
-      color: '$gray100',
-      fontSize: '$lg',
-    },
-
-    span: {
-      color: '$green300',
-      fontSize: '$xl',
-      fontWeight: 'bold',
-    },
   },
 
   '&:hover': {
@@ -59,5 +48,21 @@ export const Product = styled('div', {
       transform: 'translateY(0%)',
       opacity: 1,
     },
+  },
+})
+
+export const ProductInfo = styled('div', {
+  strong: {
+    color: '$gray100',
+    fontSize: '$lg',
+    display: 'block',
+  },
+
+  span: {
+    color: '$green300',
+    fontSize: '$xl',
+    fontWeight: 'bold',
+    display: 'block',
+    marginTop: 4,
   },
 })
