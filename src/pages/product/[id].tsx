@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Stripe from 'stripe'
 
+import { useCartProvider } from '@/contexts/cart-provider'
 import { stripe } from '@/lib/stripe'
 import { Button } from '@/styles/components/button'
 import {
@@ -11,13 +12,14 @@ import {
   ProductContainer,
   ProductDetails,
 } from '@/styles/pages/product'
+import { priceFormatter } from '@/utils/formatter'
 
 interface Product {
   id: string
   name: string
   description: string
   imageUrl: string
-  price: string
+  price: number
   defaultPriceId: string
 }
 
@@ -27,9 +29,21 @@ interface ProductProps {
 
 export default function Product({ product }: ProductProps) {
   const { isFallback } = useRouter()
+  const { addItemToCart } = useCartProvider()
 
   if (isFallback) {
     return <p>Loading...</p>
+  }
+
+  function handleAddProductToCart() {
+    addItemToCart({
+      id: product.id,
+      name: product.name,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      defaultPriceId: product.defaultPriceId,
+      quantity: 1,
+    })
   }
 
   return (
@@ -45,10 +59,10 @@ export default function Product({ product }: ProductProps) {
 
         <ProductDetails>
           <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <span>{priceFormatter.format(product.price)}</span>
           <p>{product.description}</p>
 
-          <Button>Colocar na sacola</Button>
+          <Button onClick={handleAddProductToCart}>Colocar na sacola</Button>
         </ProductDetails>
       </ProductContainer>
     </>
@@ -81,10 +95,7 @@ export const getStaticProps: GetStaticProps<
         name: product.name,
         description: product.description,
         imageUrl: product.images[0],
-        price: new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: price.currency,
-        }).format(price.unit_amount / 100),
+        price: price.unit_amount / 100,
         defaultPriceId: price.id,
       },
     },

@@ -62,6 +62,7 @@ export const CartDialogTitle = styled(DialogTitle, {
 })
 
 export const CartItens = styled('div', {
+  flex: 1,
   margin: '2rem 0',
   overflowY: 'auto',
 })
@@ -91,7 +92,7 @@ export const CartSummaryTable = styled('table', {
   },
 })
 
-export const ItemPrice = styled('strong', {
+export const TotalPrice = styled('strong', {
   fontSize: '$xl',
   lineHeight: 1.4,
 })

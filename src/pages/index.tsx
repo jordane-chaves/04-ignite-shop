@@ -8,15 +8,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
+import { useCartProvider } from '@/contexts/cart-provider'
 import { stripe } from '@/lib/stripe'
 import { Button } from '@/styles/components/button'
 import { HomeContainer, Product, ProductInfo } from '@/styles/pages/home'
+import { priceFormatter } from '@/utils/formatter'
 
 interface Product {
   id: string
   name: string
   imageUrl: string
-  price: string
+  price: number
+  defaultPriceId: string
 }
 
 interface HomeProps {
@@ -24,6 +27,8 @@ interface HomeProps {
 }
 
 export default function Home({ products }: HomeProps) {
+  const { addItemToCart } = useCartProvider()
+
   const [sliderRef] = useKeenSlider({
     mode: 'free-snap',
     slides: {
@@ -68,6 +73,17 @@ export default function Home({ products }: HomeProps) {
     },
   })
 
+  function handleAddProductToCart(product: Product) {
+    addItemToCart({
+      id: product.id,
+      name: product.name,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      defaultPriceId: product.defaultPriceId,
+      quantity: 1,
+    })
+  }
+
   return (
     <>
       <Head>
@@ -87,10 +103,16 @@ export default function Home({ products }: HomeProps) {
               <footer>
                 <ProductInfo>
                   <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <span>{priceFormatter.format(product.price)}</span>
                 </ProductInfo>
 
-                <Button variant="icon">
+                <Button
+                  onClick={(event) => {
+                    event.preventDefault()
+                    handleAddProductToCart(product)
+                  }}
+                  variant="icon"
+                >
                   <Handbag weight="bold" />
                 </Button>
               </footer>
@@ -126,10 +148,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       id: product.id,
       name: product.name,
       imageUrl: product.images[0],
-      price: new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: price.currency,
-      }).format(price.unit_amount / 100),
+      price: price.unit_amount / 100,
+      defaultPriceId: price.id,
     }
   })
 
