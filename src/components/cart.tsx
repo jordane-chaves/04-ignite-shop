@@ -12,9 +12,10 @@ export function Cart() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <CartButton>
+        <CartButton title="Clique para abrir a sacola">
           <Handbag />
           <CartCount>{items.length}</CartCount>
+          <span className="sr-only">Sacola</span>
         </CartButton>
       </DialogTrigger>
 

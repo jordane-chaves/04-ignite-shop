@@ -111,9 +111,11 @@ export default function Home({ products }: HomeProps) {
                     event.preventDefault()
                     handleAddProductToCart(product)
                   }}
+                  title="Colocar na sacola"
                   variant="icon"
                 >
                   <Handbag weight="bold" />
+                  <span className="sr-only">Colocar na sacola</span>
                 </Button>
               </footer>
             </Product>

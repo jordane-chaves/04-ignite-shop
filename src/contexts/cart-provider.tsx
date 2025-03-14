@@ -30,12 +30,14 @@ interface CartProviderState {
   items: CartItem[]
   addItemToCart: (item: CartItem) => void
   removeItemFromCart: (itemId: string) => void
+  clearCart: () => void
 }
 
 const initialState: CartProviderState = {
   items: [],
   addItemToCart: () => null,
   removeItemFromCart: () => null,
+  clearCart: () => null,
 }
 
 const CartProviderContext = createContext<CartProviderState>(initialState)
@@ -73,6 +75,10 @@ export function CartProvider({ children }: CartProviderProps) {
     })
   }
 
+  function clearCart() {
+    setCartState((state) => ({ ...state, items: [] }))
+  }
+
   useEffect(() => {
     const storedStateJSON = localStorage.getItem(CART_STATE_KEY)
 
@@ -89,7 +95,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   return (
     <CartProviderContext.Provider
-      value={{ items, addItemToCart, removeItemFromCart }}
+      value={{ items, addItemToCart, removeItemFromCart, clearCart }}
     >
       {children}
     </CartProviderContext.Provider>
