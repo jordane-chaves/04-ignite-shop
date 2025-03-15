@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Stripe from 'stripe'
 
+import { AppLayout } from '@/components/app-layout'
 import { useCartProvider } from '@/contexts/cart-provider'
 import { stripe } from '@/lib/stripe'
 import { Button } from '@/styles/components/button'
@@ -85,7 +86,7 @@ export default function Home({ products }: HomeProps) {
   }
 
   return (
-    <>
+    <AppLayout>
       <Head>
         <title>Home | Ignite Shop</title>
       </Head>
@@ -122,7 +123,7 @@ export default function Home({ products }: HomeProps) {
           </Link>
         ))}
       </HomeContainer>
-    </>
+    </AppLayout>
   )
 }
 

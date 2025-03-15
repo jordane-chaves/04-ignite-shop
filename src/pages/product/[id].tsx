@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Stripe from 'stripe'
 
+import { AppLayout } from '@/components/app-layout'
 import { useCartProvider } from '@/contexts/cart-provider'
 import { stripe } from '@/lib/stripe'
 import { Button } from '@/styles/components/button'
@@ -47,7 +48,7 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <>
+    <AppLayout>
       <Head>
         <title>{product.name} | Ignite Shop</title>
       </Head>
@@ -65,7 +66,7 @@ export default function Product({ product }: ProductProps) {
           <Button onClick={handleAddProductToCart}>Colocar na sacola</Button>
         </ProductDetails>
       </ProductContainer>
-    </>
+    </AppLayout>
   )
 }
 
