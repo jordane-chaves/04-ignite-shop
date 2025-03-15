@@ -1,40 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+<h1 align="center">🛍️ Ignite Shop</h1>
+<p align="center">Ignite | NextJS - Ignite Shop</p>
 
-## Getting Started
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-autor">Autor</a>
+</p>
 
-First, run the development server:
+<p align="center">
+  <a href="https://github.com/jordane-chaves/04-ignite-shop/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+  </a>
+</p>
+
+## 💻 Projeto
+
+Ignite Shop é uma aplicação que simula uma loja online de camisas.
+
+Essa aplicação foi desenvolvida durante um módulo do curso Ignite da Rocketseat, com o intuito de apresentar os conceitos do Next.js.
+Foi muito interessante desenvolver esta aplicação pois além dos conceitos, pude integrar com o método de pagamentos da Stripe.
+
+Após as aulas foi feito um desafio para adicionar os produtos em um "carrinho" antes do Checkout.
+Fiz todas as alterações necessárias no layout do aplicativo e a implementação completa da funcionalidade de Carrinho (Sacola).
+
+> O código desenvolvido durante as aulas deixei salvo na branch [without-cart](https://github.com/jordane-chaves/04-ignite-shop/tree/without-cart)
+
+<p align="center">
+  <img alt="Visualização da aplicação" src="./.github/preview.png" />
+</p>
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [ReactJS](https://react.dev/)
+- [NextJS](https://nextjs.org/)
+- [StitchesJS](https://stitches.dev/)
+- [RadixUI](https://www.radix-ui.com/)
+- [Keen-Slider](https://keen-slider.io/)
+
+## 🎲 Como executar
+
+### Crie uma cópia do projeto.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone este repositório
+$ git clone https://github.com/jordane-chaves/04-ignite-shop.git
+
+# Acesse o diretório do projeto no terminal/cmd
+$ cd 04-ignite-shop
+
+# Instale as dependências
+$ npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Executar a aplicação
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+# Crie uma cópia do arquivo .env.local.example e preencha as variáveis de ambiente
+$ cp .env.local.example .env.local
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+# A aplicação inciará na porta:3000 - acesse <http://localhost:3000>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Licença
 
-## Learn More
+Esse projeto está sob a licença MIT - veja o arquivo [LICENSE](https://github.com/jordane-chaves/04-ignite-shop/blob/main/LICENSE) para mais detalhes.
 
-To learn more about Next.js, take a look at the following resources:
+## 👨🏻‍💻 Autor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+<img
+  style="border-radius:50%;"
+  src="https://avatars.githubusercontent.com/jordane-chaves"
+  width="100px;"
+  title="Foto de Jordane Chaves"
+  alt="Foto de Jordane Chaves"
+/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Feito com 💜 por Jordane Chaves
